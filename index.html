@@ -3,48 +3,39 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine 💘</title>
+    <title>For My Vinni 💘</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="hearts" aria-hidden="true" id="hearts"></div>
+    <audio id="noSound" src="no-song.mp3" preload="auto"></audio>
+    <audio id="yesSound" src="yes-song.mp3" preload="auto"></audio>
 
-    <div class="wrap">
-        <div class="card" id="askCard">
-            <div class="banner"></div>
-            <h1><span class="name" id="who">Vinni</span>,<br />will you be my Valentine?
-                <span class="tiny-hearts" aria-hidden="true"><span>💗</span><span>💞</span></span>
-            </h1>
-            <p class="sub">Choose wisely. (The “No” button is… shy.)</p>
+    <div id="hearts-container"></div>
 
-            <div class="row" id="playground">
-                <div class="yes-slot">
-                    <button class="yes" id="yesBtn">YES</button>
-                </div>
-
-                <div class="no-slot" id="noSlot">
-                    <button class="no" id="noBtn">NO</button>
+    <div class="main-wrapper">
+        <div class="card shadow-animate" id="askCard">
+            <div class="top-emoji">💝</div>
+            <h1>Hey <span class="highlight" id="who">Vinni</span>,</h1>
+            <p class="question">Will you be my Valentine?</p>
+            
+            <div class="btn-group" id="playground">
+                <button class="yes-btn" id="yesBtn">YES! 😍</button>
+                <div class="no-zone">
+                    <button class="no-btn" id="noBtn">No 🥺</button>
                 </div>
             </div>
         </div>
 
         <div class="card hidden" id="yayCard">
-            <h2 class="yay">💖 YAY!!! 💖</h2>
-            <p class="yayline">Best decision ever 😘</p>
-            <div class="gifbox">
-                <img alt="Celebration" src="./Rishi.jpg" />
+            <h2 class="yay-msg">YAY! Love you Vinni! 💖</h2>
+            <div class="image-frame">
+                <img src="./rishi.jpg" alt="Our Moment" id="celebrationImg">
             </div>
-            <div class="love">I love you ❤️</div>
+            <p class="final-text">Best. Decision. Ever! ✨</p>
         </div>
     </div>
-    <body>
-    <audio id="noSound" src="no-song.mp3" preload="auto"></audio>
-    <audio id="yesSound" src="yes-song.mp3" preload="auto"></audio>
-
-    <div id="hearts-container"></div>
-   
-    <div class="confetti hidden" id="confetti" aria-hidden="true"></div>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
