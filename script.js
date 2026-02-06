@@ -6,10 +6,18 @@ const yesBtn = document.getElementById("yesBtn");
 const askCard = document.getElementById("askCard");
 const yayCard = document.getElementById("yayCard");
 
+// Audio Elements
+const noSound = document.getElementById("noSound");
+const yesSound = document.getElementById("yesSound");
+
 const funnyNoMessages = ["Sure ah?", "Vinni, alochinchu!", "No kottaku 🥺", "Try again!", "Oops! 😂"];
 
-// No button move ayye logic
+// No button move ayye logic + Music
 function moveNo() {
+    // Play funny sound when trying to click NO
+    noSound.currentTime = 0; // Reset to start
+    noSound.play().catch(e => console.log("Music play blocked by browser"));
+
     const maxX = window.innerWidth - noBtn.offsetWidth - 50;
     const maxY = window.innerHeight - noBtn.offsetHeight - 50;
     const x = Math.max(10, Math.floor(Math.random() * maxX));
@@ -22,15 +30,15 @@ function moveNo() {
 }
 
 noBtn.addEventListener("mouseover", moveNo);
-noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
+noBtn.addEventListener("touchstart", (e) => { 
+    e.preventDefault(); 
+    moveNo(); 
+});
 
-// Celebration function: Confetti mariyu Hearts
+// Celebration function: Hearts Burst
 function startCelebration() {
-    const duration = 5 * 1000; // 5 seconds celebrations
-    const end = Date.now() + duration;
-
+    const end = Date.now() + 5000;
     (function frame() {
-        // Random hearts creation
         const heart = document.createElement("div");
         heart.innerHTML = "💖";
         heart.style.position = "fixed";
@@ -47,16 +55,19 @@ function startCelebration() {
         }, 100);
 
         setTimeout(() => heart.remove(), 5000);
-
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
+        if (Date.now() < end) requestAnimationFrame(frame);
     }());
 }
 
 // Yes click chesinappudu
 yesBtn.addEventListener("click", () => {
+    // Stop noSound if playing
+    noSound.pause();
+    
+    // Play romantic song
+    yesSound.play().catch(e => console.log("Music play blocked by browser"));
+
     askCard.classList.add("hidden");
     yayCard.classList.remove("hidden");
-    startCelebration(); // Celebrations start avthayi
+    startCelebration();
 });
